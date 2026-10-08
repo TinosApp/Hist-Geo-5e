@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E5A3A">
+<title>Histoire-Géographie 5e</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F1;--paper:#FFFFFF;--ink:#16231B;--muted:#58675D;--green:#0E5A3A;--green-ink:#FFFFFF;
+  --gold:#E0A526;--red:#B3382C;--line:#D8E0D9;--tint:#E6EFE8;--ok:#1B7F4B;--bad:#B3382C;--grid:#CFDCEB;
+  --okbg:#DDF1E5;--badbg:#F7DEDA;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0F1712;--paper:#17231B;--ink:#E7EEE8;--muted:#9CB0A2;--green:#4FBF86;--green-ink:#08210F;--line:#2A3A2F;--tint:#1E2E24;--grid:#24364A;--okbg:#17382A;--badbg:#42201C;--ok:#5FD198;--bad:#F08A7E;--red:#E0665A}
+}
+:root[data-theme="dark"]{--bg:#0F1712;--paper:#17231B;--ink:#E7EEE8;--muted:#9CB0A2;--green:#4FBF86;--green-ink:#08210F;--line:#2A3A2F;--tint:#1E2E24;--grid:#24364A;--okbg:#17382A;--badbg:#42201C;--ok:#5FD198;--bad:#F08A7E;--red:#E0665A}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.5}
+h1,h2,h3{font-family:Bitter,Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--green)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:640px;margin:0 auto;padding:4px 16px 110px}
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;max-width:640px;margin:0 auto}
+.brand{font-family:Bitter,Georgia,serif;font-weight:700;font-size:18px;color:var(--green)}
+.chip{font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;color:var(--muted)}
+button.chip{color:var(--green);border-color:var(--green)}
+/* main */
+main{max-width:640px;margin:0 auto;padding:4px 16px 96px}
+.page-title{font-size:26px;margin:8px 0 4px}
+.page-sub{color:var(--muted);margin:0 0 16px}
+.list{display:flex;flex-direction:column;gap:10px}
+.card-btn{width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:10px;padding:14px 14px 14px 16px;display:flex;gap:12px;align-items:center}
+.card-btn:active{background:var(--tint)}
+.card-btn .t{font-weight:700;display:block}
+.card-btn .m{color:var(--muted);font-size:15px;display:block;margin-top:2px}
+.card-btn .grow{flex:1;min-width:0}
+.sa{display:inline-block;font-weight:700;font-size:14px;background:var(--tint);color:var(--green);border-radius:6px;padding:1px 8px;margin-bottom:4px}
+.lock{flex:none;color:var(--muted)}
+.card-btn.is-locked{border-left-color:var(--line)}
+.back{background:none;border:0;color:var(--green);font-weight:700;padding:8px 0;margin-bottom:4px}
+/* fiche */
+.fiche h2{font-size:24px;margin:4px 0 10px}
+.intro{background:var(--tint);border-radius:10px;padding:12px 14px;margin:0 0 14px}
+.block{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+.block h3{font-size:19px;color:var(--green);margin-bottom:8px}
+.block ul{margin:0;padding-left:20px}
+.block li{margin:5px 0}
+.vocab dt{font-weight:700;margin-top:8px}
+.vocab dd{margin:0;color:var(--muted)}
+/* exam */
+.exam{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px}
+.exhead{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:14px;font-weight:700;text-align:center}
+.exhead p{margin:2px 0}
+.exhead .big{font-family:Bitter,Georgia,serif;font-size:18px}
+.item{margin-top:16px}
+.item h3{font-size:18px;display:flex;justify-content:space-between;gap:8px}
+.item h3 span{font-family:"Source Sans 3",sans-serif;font-weight:600;color:var(--muted);font-size:15px}
+.cons{font-style:italic;color:var(--muted);margin:4px 0 8px}
+.assoc{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}
+.assoc ol{margin:0;padding-left:22px}
+.assoc li{margin:6px 0}
+.q{margin:8px 0}
+.corr{background:var(--okbg);border-radius:10px;padding:12px 14px;margin-top:12px}
+.exam+.btn{margin-top:4px}
+.corr h4{margin:0 0 6px;font-family:Bitter,Georgia,serif;font-size:16px;color:var(--ok)}
+.corr p,.corr li{margin:4px 0}
+.corr ul{padding-left:18px;margin:4px 0}
+/* buttons */
+.btn{display:block;width:100%;border-radius:10px;border:2px solid var(--green);padding:13px 16px;font-weight:700;text-align:center;background:var(--paper);color:var(--green)}
+.btn.primary{background:var(--green);color:var(--green-ink)}
+.btn.ghost{background:transparent}
+.btn+.btn{margin-top:10px}
+.row{display:flex;gap:10px}
+.row .btn+.btn{margin-top:0}
+/* quiz */
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--gold)}
+.qtext{font-family:Bitter,Georgia,serif;font-size:21px;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:13px 14px;margin-bottom:10px}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt[disabled]{cursor:default}
+.expl{background:var(--tint);border-radius:10px;padding:10px 14px;margin:4px 0 14px}
+.score{font-family:Bitter,Georgia,serif;font-size:44px;color:var(--green);margin:6px 0}
+/* flashcards */
+.fc{width:100%;min-height:210px;background:var(--paper);border:2px solid var(--green);border-radius:14px;padding:22px 18px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:8px;margin:10px 0 14px}
+.fc .lab{color:var(--muted);font-size:14px;font-weight:600}
+.fc .txt{font-family:Bitter,Georgia,serif;font-size:21px}
+.fc.back-side{background:var(--tint)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.pill{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;font-weight:600}
+.pill[aria-pressed="true"]{background:var(--green);color:var(--green-ink);border-color:var(--green)}
+/* reperes */
+.rep{display:grid;grid-template-columns:104px 1fr;gap:6px 14px;margin:0}
+.rep dt{font-weight:700;color:var(--green)}
+.rep dd{margin:0}
+/* methodes */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:0 14px;margin-bottom:10px}
+summary{font-weight:700;padding:13px 0;cursor:pointer}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details ul{margin:0 0 12px;padding-left:20px}
+/* nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;z-index:5}
+nav.tabs .in{display:flex;width:100%;max-width:640px}
+nav.tabs button{flex:1;background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:600;color:var(--muted);padding:4px 0;border-radius:8px}
+nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="page"]{color:var(--green)}
+nav.tabs button[aria-current="page"] svg{stroke-width:2.6}
+/* gate */
+.gate{min-height:100%;display:flex;align-items:center;padding:12px 12px 24px}
+.sheet{width:100%;max-width:520px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:26px 20px 22px 62px;
+  background-image:linear-gradient(90deg,transparent 44px,var(--red) 44px,var(--red) 46px,transparent 46px),repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--grid) 31px,var(--grid) 32px);
+  background-position:0 0,0 14px}
+.sheet h1{font-size:34px;margin:2px 0 8px}
+.sheet .school{margin:0;font-weight:700;color:var(--green)}
+.sheet .lead{margin:0 0 18px}
+.sheet label{font-weight:700;display:block;margin-bottom:4px}
+.sheet input{width:100%;font:inherit;font-size:20px;letter-spacing:1px;text-transform:uppercase;padding:12px;border:2px solid var(--ink);border-radius:8px;background:var(--paper);color:var(--ink);margin-bottom:10px}
+.msg{background:var(--badbg);color:var(--ink);border-left:4px solid var(--bad);border-radius:6px;padding:8px 10px;margin:0 0 12px}
+.msg.info{background:var(--tint);border-left-color:var(--green)}
+.price{font-weight:700;margin:16px 0 4px}
+.contact{margin:0;color:var(--muted)}
+.foot{color:var(--muted);font-size:15px;text-align:center;margin-top:18px}
+@media (max-width:400px){.assoc{grid-template-columns:1fr}.rep{grid-template-columns:88px 1fr}}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .3s}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ===== Réglages du propriétaire ===== */
+var OWNER={nom:"Totin",tel:"(+229) 0197475349",telHref:"+2290197475349"};
+var DURATION_MONTHS=10;
+var PRICE="1 000 FCFA";
+var HASHES=new Set(["kvf8fnb8lq","1ntzdw3kska","1guv1b19hhs","1bkb8x6cf8z","1zdj4n4qxat","1b3q11pgjn1","28a224ikbx6","1xoq2w8zx0h","1gxfvjvm8m9","1hidfmjoyrg","rzpx6x4qt5","1lh667ly1kl","235a0k7u03f","2gfh5v5wv5d","8j1dwn64h","1wa80g8nipx","15joqy9zc2d","1cydufnf6uj","okecst4khw","273yxvla7oc","13j9r4asps7","6i7fm7andc","jimswlz0ap","mgy2nh30nh","15vd4jlgwif","l48i226f9p","1xo15iwwune","10rlgv85caz","3cbqc53qwp","2c2kq669l6t","7fir3a1db2","2d5mk7g56rh","1l1vmg5exgf","1ya1l7rq01o","z0f2fvgtxk","12bjqyud5ps","19cw6mov7gp","10gw74ywl32","1nk3w1zzvkt","3vy7zazbli","1ct1ddndp7w","8bjn1lq6j5","h4r7v9zqs1","1k7in3hgcej","1oifg4yq1ez","yd6eh3gena","v761clqwkb","9yqn9sofgq","tlffku23g5","ui6al61c89","od2qkvjdqt","210mtpo0bns","wxdpdmzh2x","1dwnfxqlh33","hr3135fqux","1z2tt2098hj","1ny2ny28vwh","zs07pgmkn2","2d2fremcreg","221ul6df0yv","8jv1j5wgjc","6tffdrt209","1mifymeqxeo","3tan38ok3l","8xtfdbt7yc","tuk2pz3tnm","1i0j9bcooux","1mbsjmamwul","1ddcyhgp5pu","1wjquo8slyd","ilfl8xrt0t","1j8wwasxun4","2au34cxly69","1yxqi0vedrb","17p5tay9r32","m414lh2m","2loskzffzw","29zf2gbr7sn","23nkbje0ncn","1idg4g9jhdn","1a0556t53ou","1l8evkmjjx5","20llgubtvxu","riumdlkxaz","r9wvfbhvx6","1j4j010qw3j","203804oaf4j","21iu9j1q72g","21ki2z81gwb","2g312hnc2cb","24xyt9wt3vy","1t784fqdzqt","1cj7v0fkb9e","q4c25k8okd","1yfts6zcqgb","2d9ztb75h1c","1ue4pdoljqd","2f378318lvj","1y9nfaf0d6q","219304sd9z2"]);
+var SALT="hg5e|";
+
+/* ===== Outils ===== */
+function h53(str,seed){seed=seed||7;var h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(var i=0;i<str.length;i++){var ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}
+h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+return (4294967296*(2097151&h2)+(h1>>>0)).toString(36);}
+var mem={};
+var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return mem[k]==null?null:mem[k]}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}};
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function fmtDate(d){return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"})}
+
+/* ===== Contenu ===== */
+var SAS=[
+{n:1,titre:"Comment était organisée l'Égypte ancienne ?",court:"L'Égypte ancienne",
+ intro:"L'Égypte ancienne est née dans la vallée et le delta du Nil, au nord-est de l'Afrique. Elle a duré plus de 3 000 ans, de l'unification vers 3100 av. J.-C. à la conquête romaine en 30 av. J.-C.",
+ sections:[
+ {h:"Un cadre géographique : le don du Nil",pts:["Le Nil traverse le désert du sud vers le nord et se jette dans la Méditerranée par un delta.","Chaque année, la crue dépose un limon fertile : les paysans y cultivent blé, orge et lin.","Haute-Égypte : la vallée, au sud. Basse-Égypte : le delta, au nord.","Le désert protège le pays des invasions mais l'isole aussi."]},
+ {h:"L'organisation politique",pts:["À la tête du pays : le pharaon, roi considéré comme un dieu vivant (fils de Rê, incarnation d'Horus).","Il commande l'armée, rend la justice et dirige les prêtres.","Le vizir est son premier ministre ; les nomarques gouvernent les provinces (les nomes) ; les scribes tiennent les comptes et recensent les impôts.","Capitales : Memphis (Ancien Empire) puis Thèbes (Nouvel Empire)."]},
+ {h:"La société",pts:["Au sommet : le pharaon et sa famille, puis les nobles, les prêtres et les hauts fonctionnaires.","Ensuite : les scribes et les soldats, puis les artisans et les commerçants.","Les paysans sont les plus nombreux ; pendant la crue, ils travaillent aux grands chantiers du pharaon.","Les esclaves sont souvent des prisonniers de guerre."]},
+ {h:"L'économie",pts:["L'agriculture est la base : blé, orge, lin, papyrus. L'élevage et l'artisanat (poterie, bijoux, tissage) complètent les ressources.","Le commerce se fait avec la Nubie (or, ivoire, ébène), le Pount (encens) et le Liban (bois de cèdre).","Les impôts sont souvent payés en nature (une part des récoltes)."]},
+ {h:"Religion et croyances",pts:["Les Égyptiens croient en plusieurs dieux : Rê (soleil), Osiris (mort et renaissance), Isis, Horus, Anubis.","Ils croient à la vie après la mort : ils momifient les corps et construisent des tombeaux, dont les pyramides.","Les temples (Karnak, Louxor) sont les maisons des dieux."]},
+ {h:"Écriture et savoirs",pts:["Les hiéroglyphes sont écrits sur la pierre et sur le papyrus.","Champollion les déchiffre en 1822, grâce à la pierre de Rosette découverte en 1799.","Les Égyptiens ont un calendrier de 365 jours, pratiquent l'arpentage et la géométrie et connaissent la médecine."]}],
+ mots:[["Pharaon","Roi de l'Égypte ancienne, considéré comme un dieu."],["Nome","Province gouvernée par un nomarque."],["Vizir","Premier ministre du pharaon."],["Scribe","Personne qui sait écrire et tient les comptes."],["Momification","Technique de conservation des corps."],["Hiéroglyphes","Écriture des anciens Égyptiens."],["Delta","Zone où un fleuve se divise en plusieurs bras avant la mer."],["Limon","Terre fertile déposée par la crue."]]},
+{n:2,titre:"Comment comprendre les origines lointaines des peuples de l'actuelle République du Bénin ?",court:"Origines des peuples du Bénin",
+ intro:"Les peuples qui vivent aujourd'hui au Bénin n'ont pas tous la même origine. Leur histoire se reconstitue grâce à plusieurs sources. Les traditions peuvent varier d'une localité à l'autre.",
+ sections:[
+ {h:"Les sources de l'histoire",pts:["Les traditions orales : récits transmis par les griots et les chefs de collectivité.","L'archéologie : outils, poteries, vestiges retrouvés dans le sol.","La linguistique : la parenté entre les langues montre des origines communes.","Les sources écrites : récits de voyageurs, archives."]},
+ {h:"Les grands groupes et leurs origines",pts:["Adja-Fon (sud) : ils disent venir de Tado, sur le Mono, puis d'Allada, Abomey et Porto-Novo.","Yoruba et Nagot (centre-est : Kétou, Sakété, Savè) : ils rattachent leur origine à Ife, dans l'actuel Nigeria.","Bariba (nord-est : Nikki, Kalalé) : ils rattachent leur origine à la région de Bussa, dans l'actuel Nigeria.","Dendi (nord : Kandi, Malanville) : liés à l'espace songhay de la vallée du Niger.","Peuls : éleveurs nomades venus de l'ouest, présents surtout dans le nord.","Otamari et autres peuples de l'Atakora : installés très anciennement dans la région."]},
+ {h:"Pourquoi les peuples migrent",pts:["Les guerres et les conflits de succession.","La recherche de terres fertiles et de pâturages.","Les sécheresses et les épidémies.","Le commerce et la chasse."]},
+ {h:"Les conséquences des migrations",pts:["Brassage des peuples et mélange des cultures.","Naissance de royaumes : Allada, Danxomè (Abomey), Hogbonou (Porto-Novo), Nikki.","Grande diversité de langues et de traditions au Bénin aujourd'hui."]}],
+ mots:[["Migration","Déplacement d'un peuple d'un lieu vers un autre."],["Tradition orale","Récit transmis de bouche en bouche."],["Dynastie","Suite de rois d'une même famille."],["Autochtone","Personne originaire du lieu où elle vit."],["Griot","Gardien de la mémoire et des récits d'un peuple."]]},
+{n:3,titre:"Comment expliquer le dynamisme économique des milieux tempérés ?",court:"Les milieux tempérés",
+ intro:"Les milieux tempérés se situent entre les tropiques et les cercles polaires, dans les deux hémisphères. Ce sont parmi les régions les plus développées du monde.",
+ sections:[
+ {h:"Les caractéristiques",pts:["Latitudes comprises entre 23°27' et 66°33' environ ; quatre saisons : printemps, été, automne, hiver.","Climat océanique : pluies toute l'année (ouest de la France, Royaume-Uni).","Climat continental : hivers froids, étés chauds (Russie, centre des États-Unis).","Climat méditerranéen : été sec, hiver doux (Italie, Espagne)."]},
+ {h:"Les activités économiques",pts:["Agriculture intensive et mécanisée : blé, maïs, betterave, vigne, élevage.","Industrie : sidérurgie, automobile, chimie, électronique.","Transports très développés : autoroutes, trains rapides, ports, aéroports.","Commerce et services : banques, tourisme, recherche."]},
+ {h:"Les facteurs du dynamisme",pts:["Des ressources : charbon, fer, pétrole, eau.","Des capitaux importants et des technologies avancées.","Une main-d'œuvre qualifiée et de grands centres de recherche.","De grands marchés et de bonnes infrastructures."]},
+ {h:"Les problèmes",pts:["Pollution de l'air, de l'eau et des sols.","Chômage et fermeture d'usines.","Vieillissement de la population et gestion des déchets."]},
+ {h:"Complément : les milieux polaires",pts:["Ils se trouvent au-delà des cercles polaires : froid extrême, banquise, nuit et jour polaires.","Peu peuplés : Inuits au nord, quelques équipes scientifiques.","Activités : pêche, chasse, élevage de rennes, mines et pétrole.","Milieu fragile, menacé par le réchauffement climatique."]}],
+ mots:[["Latitude","Distance d'un lieu à l'équateur, mesurée en degrés."],["Climat tempéré","Climat à quatre saisons des moyennes latitudes."],["Agriculture intensive","Forte production sur de petites surfaces grâce aux machines et aux engrais."],["Industrialisation","Développement des usines et des industries."],["Banquise","Glace formée par la congélation de l'eau de mer."]]},
+{n:4,titre:"Comment comprendre l'évolution politique et économique de quelques empires africains du Xe au XVIe siècle ? (le cas du Ghana)",court:"Les empires africains",
+ intro:"Du Xe au XVIe siècle, plusieurs empires se succèdent en Afrique. Leur puissance repose sur un pouvoir fort et sur le commerce, surtout celui de l'or et du sel.",
+ sections:[
+ {h:"L'empire du Ghana (Wagadou)",pts:["Fondé par les Soninké ; capitale : Koumbi Saleh. Apogée aux Xe-XIe siècles.","Richesses : l'or du Bambouk et du Bouré, le sel du Sahara.","Le roi lève des taxes sur les marchandises du commerce transsaharien.","Chute : les Almoravides prennent Koumbi Saleh en 1076 ; sécheresses et révoltes de vassaux affaiblissent l'empire."]},
+ {h:"L'empire du Mali",pts:["Soundiata Keïta bat Soumaoro Kanté à Kirina, vers 1235 ; capitale : Niani.","Kankan Moussa fait son pèlerinage à La Mecque en 1324 et montre la richesse du Mali.","Tombouctou devient un grand centre de commerce et de savoir."]},
+ {h:"L'empire songhay",pts:["Capitale : Gao.","Soni Ali Ber (1464-1492) conquiert Tombouctou et Djenné.","Askia Mohamed (1493-1528) organise l'empire en provinces.","L'empire s'effondre en 1591, battu à Tondibi par une armée marocaine armée de fusils."]},
+ {h:"Le Monomotapa",pts:["Situé en Afrique australe, dans l'actuel Zimbabwe ; ville célèbre : le Grand Zimbabwe.","Richesse : l'or, vendu vers la côte de l'océan Indien. Apogée au XVe siècle."]},
+ {h:"Organisation commune",pts:["Un empereur entouré d'un conseil, des gouverneurs de provinces, une armée et des juges.","Les peuples soumis paient un tribut.","Économie : agriculture, élevage, artisanat, commerce de l'or, du sel, du cuivre et de la cola."]}],
+ mots:[["Empire","Grand territoire regroupant plusieurs peuples sous l'autorité d'un souverain."],["Tribut","Impôt payé par un peuple soumis à son maître."],["Commerce transsaharien","Commerce à travers le Sahara entre l'Afrique du Nord et l'Afrique de l'Ouest."],["Caravane","Groupe de marchands qui voyagent ensemble à travers le désert."],["Vassal","Chef ou royaume soumis à un souverain plus puissant."]]}
+];
+
+var QZ=[
+{id:"q1a",sa:1,titre:"Le cadre et le pouvoir",items:[
+ {q:"Quel fleuve a permis la naissance de l'Égypte ancienne ?",o:["Le Niger","Le Nil","Le Congo","Le Zambèze"],a:1,e:"L'Égypte est « un don du Nil » : sa crue rend les terres fertiles."},
+ {q:"La Basse-Égypte correspond…",o:["Au delta, au nord","À la vallée, au sud","Au désert de l'ouest","À la mer Rouge"],a:0,e:"La Basse-Égypte est le delta, au nord ; la Haute-Égypte est la vallée, au sud."},
+ {q:"Le pharaon est considéré comme…",o:["Un simple chef militaire","Un dieu vivant","Un représentant élu","Un ministre"],a:1,e:"Le pharaon est un roi-dieu : fils de Rê et incarnation d'Horus."},
+ {q:"Qui est le premier ministre du pharaon ?",o:["Le vizir","Le scribe","Le nomarque","Le prêtre"],a:0,e:"Le vizir dirige l'administration du royaume."}]},
+{id:"q1b",sa:1,titre:"Société, croyances et savoirs",items:[
+ {q:"Quel groupe social est le plus nombreux ?",o:["Les nobles","Les prêtres","Les paysans","Les scribes"],a:2,e:"Les paysans forment la grande majorité de la population."},
+ {q:"Pourquoi les Égyptiens pratiquaient-ils la momification ?",o:["Pour vendre les corps","Pour conserver le corps en vue de la vie après la mort","Pour soigner les malades","Pour honorer le Nil"],a:1,e:"Ils croyaient que le défunt avait besoin de son corps dans l'au-delà."},
+ {q:"Qui a déchiffré les hiéroglyphes en 1822 ?",o:["Narmer","Khéops","Champollion","Hérodote"],a:2,e:"Champollion y est parvenu grâce à la pierre de Rosette."},
+ {q:"Les pyramides sont avant tout…",o:["Des greniers","Des tombeaux de pharaons","Des palais","Des marchés"],a:1,e:"Ce sont des tombeaux pour les pharaons."}]},
+{id:"q2a",sa:2,titre:"Sources et origines",items:[
+ {q:"Quelle source utilise les récits transmis de bouche en bouche ?",o:["L'archéologie","Les traditions orales","La photographie","Les archives écrites"],a:1,e:"Les griots et les anciens transmettent l'histoire à l'oral."},
+ {q:"De quelle localité les Adja-Fon disent-ils venir ?",o:["Tado","Ife","Bussa","Gao"],a:0,e:"Tado se trouve sur le Mono ; de là, les Adja-Fon gagnent Allada puis Abomey."},
+ {q:"Les Yoruba et Nagot rattachent leur origine à…",o:["Ife","Nikki","Tado","Tombouctou"],a:0,e:"Ife est une ville de l'actuel Nigeria."},
+ {q:"Les Peuls sont surtout…",o:["Des pêcheurs","Des éleveurs nomades","Des commerçants maritimes","Des mineurs"],a:1,e:"Ils conduisent leurs troupeaux de bovins sur de longues distances."}]},
+{id:"q2b",sa:2,titre:"Migrations et conséquences",items:[
+ {q:"Quelles causes expliquent les migrations anciennes ?",o:["Le tourisme","Les guerres et la recherche de terres fertiles","Le chemin de fer","L'école obligatoire"],a:1,e:"Guerres, sécheresses et recherche de terres ou de pâturages poussent les peuples à partir."},
+ {q:"Quel royaume les Fon ont-ils fondé autour d'Abomey ?",o:["Le Danxomè","Le Mali","Le Ghana","Le Songhay"],a:0,e:"Le Danxomè (Dahomey) a Abomey pour capitale."},
+ {q:"Les Bariba sont installés surtout autour de…",o:["Porto-Novo","Nikki","Ouidah","Cotonou"],a:1,e:"Nikki fut le centre du royaume bariba, dans le nord-est."},
+ {q:"Un autochtone est…",o:["Un étranger de passage","Une personne originaire du lieu où elle vit","Un marchand","Un roi"],a:1,e:"Le mot désigne les premiers occupants d'un lieu."}]},
+{id:"q3a",sa:3,titre:"Climats et caractéristiques",items:[
+ {q:"Les milieux tempérés se situent…",o:["Autour de l'équateur","Entre les tropiques et les cercles polaires","Aux pôles","Uniquement dans l'hémisphère nord"],a:1,e:"Ils existent dans les deux hémisphères, entre 23°27' et 66°33' environ."},
+ {q:"Combien de saisons connaissent les milieux tempérés ?",o:["Deux","Trois","Quatre","Une seule"],a:2,e:"Printemps, été, automne et hiver."},
+ {q:"Quel climat a un été sec et un hiver doux ?",o:["Océanique","Continental","Méditerranéen","Polaire"],a:2,e:"C'est le climat des pays autour de la Méditerranée."},
+ {q:"Où trouve-t-on un climat océanique ?",o:["Dans l'ouest de la France","En Sibérie","Au Sahara","Au Groenland"],a:0,e:"Il pleut toute l'année et les températures restent douces."}]},
+{id:"q3b",sa:3,titre:"Activités et dynamisme",items:[
+ {q:"L'agriculture intensive, c'est…",o:["Une agriculture sans outils","Une forte production grâce aux machines et aux engrais","Une cueillette","Un élevage nomade"],a:1,e:"Elle produit beaucoup sur de petites surfaces."},
+ {q:"Quel facteur explique le dynamisme économique ?",o:["Une main-d'œuvre qualifiée et la recherche","L'absence de routes","Le manque de capitaux","L'isolement"],a:0,e:"Savoir-faire, technologies et capitaux font la force de ces régions."},
+ {q:"Quel problème touche les milieux tempérés ?",o:["La pollution industrielle","Le manque de transports","L'absence d'usines","La famine généralisée"],a:0,e:"Usines et transports polluent l'air, l'eau et les sols."},
+ {q:"Quel peuple vit dans les milieux polaires du nord ?",o:["Les Inuits","Les Bariba","Les Soninké","Les Berbères"],a:0,e:"Les Inuits vivent de pêche, de chasse et d'élevage de rennes."}]},
+{id:"q4a",sa:4,titre:"L'empire du Ghana",items:[
+ {q:"Quelle était la capitale de l'empire du Ghana ?",o:["Gao","Koumbi Saleh","Niani","Tombouctou"],a:1,e:"Koumbi Saleh était la capitale et un grand marché."},
+ {q:"Quel peuple a fondé l'empire du Ghana ?",o:["Les Soninké","Les Fon","Les Yoruba","Les Inuits"],a:0,e:"Le Wagadou est un royaume soninké."},
+ {q:"Quelles richesses ont fait la puissance du Ghana ?",o:["L'or et le sel","Le pétrole et le fer","Le café et le cacao","La soie et le thé"],a:0,e:"Le Ghana contrôle l'or du sud et commerce avec le sel du Sahara."},
+ {q:"En quelle année les Almoravides prennent-ils Koumbi Saleh ?",o:["1076","1235","1324","1591"],a:0,e:"La prise de Koumbi Saleh en 1076 marque le début du déclin."}]},
+{id:"q4b",sa:4,titre:"Mali, Songhay et Monomotapa",items:[
+ {q:"Qui bat Soumaoro Kanté à Kirina vers 1235 ?",o:["Askia Mohamed","Soundiata Keïta","Kankan Moussa","Soni Ali Ber"],a:1,e:"Cette victoire fonde l'empire du Mali."},
+ {q:"Quel empereur du Mali fait un célèbre pèlerinage à La Mecque en 1324 ?",o:["Kankan Moussa","Soni Ali Ber","Askia Mohamed","Soundiata Keïta"],a:0,e:"Il distribue tant d'or sur son passage que la richesse du Mali est connue jusqu'en Europe."},
+ {q:"Quelle était la capitale de l'empire songhay ?",o:["Niani","Koumbi Saleh","Gao","Djenné"],a:2,e:"Gao était le centre du pouvoir songhay."},
+ {q:"Quel empire s'étendait en Afrique australe, autour du Grand Zimbabwe ?",o:["Le Mali","Le Monomotapa","Le Ghana","Le Songhay"],a:1,e:"Le Monomotapa tirait sa richesse de l'or."}]}
+];
+
+var EP=[
+{id:"e1",sa:1,ordre:[2,0,3,1],
+ assoc:[["Pharaon","Roi de l'Égypte ancienne, considéré comme un dieu."],["Scribe","Personne qui sait écrire et tient les comptes."],["Momification","Technique de conservation des corps."],["Delta","Zone où le fleuve se divise en plusieurs bras avant la mer."]],
+ courtes:[["Cite le fleuve autour duquel s'est développée l'Égypte ancienne.","Le Nil."],["Cite deux activités économiques des anciens Égyptiens.","Deux parmi : agriculture, élevage, artisanat, commerce."],["Cite deux dieux égyptiens.","Deux parmi : Rê, Osiris, Isis, Horus, Anubis."],["Comment appelle-t-on l'écriture des anciens Égyptiens ?","Les hiéroglyphes."]],
+ vf:[["Le pharaon est élu par le peuple.",false,"Le pharaon est un roi héréditaire, considéré comme un dieu."],["La crue du Nil dépose un limon fertile.",true],["Les paysans forment la plus petite classe sociale.",false,"Les paysans sont les plus nombreux."],["Les pyramides sont des tombeaux.",true]],
+ quest:["Explique en deux phrases pourquoi l'Égypte est appelée « un don du Nil ».","La crue annuelle du Nil dépose un limon fertile sur les terres (2 pts). Grâce à cela, les paysans peuvent cultiver et nourrir la population, dans un pays entouré de désert (2 pts)."]},
+{id:"e2",sa:2,ordre:[1,3,0,2],
+ assoc:[["Migration","Déplacement d'un peuple d'un lieu vers un autre."],["Tradition orale","Récit transmis de bouche en bouche."],["Dynastie","Suite de rois d'une même famille."],["Autochtone","Personne originaire du lieu où elle vit."]],
+ courtes:[["Cite deux sources qui permettent de connaître l'histoire des peuples du Bénin.","Deux parmi : traditions orales, archéologie, linguistique, sources écrites."],["Cite deux causes des migrations.","Deux parmi : guerres, recherche de terres fertiles, sécheresses, épidémies, commerce."],["De quelle localité les Adja-Fon disent-ils venir ?","De Tado."],["Cite deux peuples du nord du Bénin.","Deux parmi : Bariba, Dendi, Peuls, Otamari."]],
+ vf:[["Les Yoruba rattachent leur origine à Ife.",true],["Les Peuls sont des agriculteurs sédentaires.",false,"Les Peuls sont des éleveurs nomades."],["La linguistique étudie les langues et leurs parentés.",true],["Les migrations n'ont eu aucune conséquence.",false,"Elles ont provoqué un brassage des peuples et la naissance de royaumes."]],
+ quest:["Explique deux conséquences des migrations sur les peuples du Bénin.","Deux parmi (2 pts chacune) : brassage des peuples et mélange des cultures ; naissance de royaumes (Allada, Danxomè, Porto-Novo, Nikki) ; diversité des langues et des traditions."]},
+{id:"e3",sa:3,ordre:[3,1,2,0],
+ assoc:[["Climat tempéré","Climat à quatre saisons des moyennes latitudes."],["Agriculture intensive","Forte production sur de petites surfaces grâce aux machines et aux engrais."],["Latitude","Distance d'un lieu à l'équateur, mesurée en degrés."],["Banquise","Glace formée par la congélation de l'eau de mer."]],
+ courtes:[["Cite deux types de climats tempérés.","Deux parmi : océanique, continental, méditerranéen."],["Cite deux activités des milieux tempérés.","Deux parmi : agriculture intensive, industrie, commerce, transports, services."],["Cite deux facteurs du dynamisme économique.","Deux parmi : ressources, capitaux, technologie, main-d'œuvre qualifiée, infrastructures."],["Nomme un peuple des milieux polaires.","Les Inuits."]],
+ vf:[["Les milieux tempérés connaissent quatre saisons.",true],["Le climat méditerranéen a un été humide.",false,"Le climat méditerranéen a un été sec."],["Les milieux tempérés ne connaissent aucune pollution.",false,"Industrie et transports y polluent l'air, l'eau et les sols."],["Les milieux polaires sont très peuplés.",false,"Ils sont très peu peuplés."]],
+ quest:["Explique deux facteurs qui expliquent le dynamisme économique des milieux tempérés.","Deux parmi (2 pts chacun, avec une explication) : ressources du sous-sol, capitaux importants, technologies et recherche, main-d'œuvre qualifiée, transports développés, grands marchés."]},
+{id:"e4",sa:4,ordre:[0,2,3,1],
+ assoc:[["Empire","Grand territoire regroupant plusieurs peuples sous l'autorité d'un souverain."],["Tribut","Impôt payé par un peuple soumis à son maître."],["Caravane","Groupe de marchands qui voyagent ensemble à travers le désert."],["Vassal","Chef ou royaume soumis à un souverain plus puissant."]],
+ courtes:[["Quelle était la capitale de l'empire du Ghana ?","Koumbi Saleh."],["Cite deux richesses de l'empire du Ghana.","L'or et le sel."],["Qui a fondé l'empire du Mali ?","Soundiata Keïta."],["Cite un empire africain, autre que le Ghana, du Xe au XVIe siècle.","Un parmi : Mali, Songhay, Monomotapa."]],
+ vf:[["Les Almoravides ont pris Koumbi Saleh en 1076.",true],["Kankan Moussa était l'empereur du Songhay.",false,"Kankan Moussa était l'empereur du Mali."],["Le commerce transsaharien a enrichi le Ghana.",true],["Le Monomotapa se trouvait en Afrique de l'Ouest.",false,"Le Monomotapa se trouvait en Afrique australe."]],
+ quest:["Explique deux causes de la chute de l'empire du Ghana.","Deux parmi (2 pts chacune) : attaque des Almoravides en 1076 ; sécheresses ; révoltes des vassaux."]}
+];
+
+var FC=[
+[1,"Qu'est-ce que le limon ?","Une terre fertile déposée par la crue du Nil."],
+[1,"Qui dirige l'Égypte ancienne ?","Le pharaon, roi considéré comme un dieu vivant."],
+[1,"Quel est le rôle du vizir ?","C'est le premier ministre du pharaon : il dirige l'administration."],
+[1,"Pourquoi momifiait-on les morts ?","Pour conserver le corps en vue de la vie après la mort."],
+[1,"Qui a déchiffré les hiéroglyphes, et quand ?","Champollion, en 1822, grâce à la pierre de Rosette."],
+[2,"Quelles sont les sources de l'histoire des peuples du Bénin ?","Traditions orales, archéologie, linguistique, sources écrites."],
+[2,"D'où disent venir les Adja-Fon ?","De Tado, puis Allada et Abomey."],
+[2,"D'où les Yoruba et Nagot rattachent-ils leur origine ?","D'Ife, dans l'actuel Nigeria."],
+[2,"Qui sont les Peuls ?","Des éleveurs nomades venus de l'ouest, présents surtout dans le nord."],
+[2,"Pourquoi les peuples migrent-ils ?","Guerres, querelles de succession, terres fertiles, pâturages, sécheresses, commerce."],
+[3,"Où sont les milieux tempérés ?","Entre les tropiques et les cercles polaires, dans les deux hémisphères."],
+[3,"Quels sont les trois climats tempérés ?","Océanique, continental et méditerranéen."],
+[3,"Qu'est-ce que l'agriculture intensive ?","Une forte production sur de petites surfaces grâce aux machines et aux engrais."],
+[3,"Quels facteurs expliquent le dynamisme économique ?","Ressources, capitaux, technologie, recherche, main-d'œuvre qualifiée, transports, grands marchés."],
+[3,"Quelles activités dans les milieux polaires ?","Pêche, chasse, élevage de rennes, mines et pétrole."],
+[4,"Quelle était la capitale du Ghana ancien ?","Koumbi Saleh."],
+[4,"Quelles richesses ont fait la puissance du Ghana ?","L'or et le sel, par le commerce transsaharien."],
+[4,"Qui a fondé le Mali, et après quelle bataille ?","Soundiata Keïta, après la victoire de Kirina vers 1235."],
+[4,"Pourquoi Kankan Moussa est-il célèbre ?","Son pèlerinage à La Mecque en 1324 a montré la richesse en or du Mali."],
+[4,"Comment l'empire songhay prend-il fin ?","Par la défaite de Tondibi en 1591 face à une armée marocaine."]
+];
+
+var REP=[
+{sa:1,items:[["Vers 3100 av. J.-C.","Unification de l'Égypte (tradition : le roi Narmer)."],["Vers 2600 av. J.-C.","Construction de la pyramide de Khéops à Gizeh."],["Vers 1550 av. J.-C.","Début du Nouvel Empire ; capitale : Thèbes."],["332 av. J.-C.","Conquête de l'Égypte par Alexandre le Grand."],["30 av. J.-C.","L'Égypte devient romaine."],["1799 / 1822","Pierre de Rosette découverte / hiéroglyphes déchiffrés par Champollion."]]},
+{sa:2,items:[["Tado","Lieu d'origine déclaré des Adja-Fon, sur le Mono."],["Allada, Abomey","Étapes et capitales des royaumes de l'aire adja-fon."],["Ife","Origine déclarée des Yoruba et Nagot (Nigeria actuel)."],["Nikki","Centre du royaume bariba, au nord-est."],["Kandi, Malanville","Régions dendi, au nord."],["Atakora","Région des Otamari, au nord-ouest."]]},
+{sa:3,items:[["23°27' N et S","Les tropiques : limite sud des milieux tempérés vers l'équateur."],["66°33' N et S","Les cercles polaires : limite vers les pôles."],["Océanique","Ouest de la France, Royaume-Uni."],["Continental","Russie, centre des États-Unis."],["Méditerranéen","Italie, Espagne, Grèce."],["Polaire","Au-delà de 66°33' : Arctique, Antarctique."]]},
+{sa:4,items:[["Xe-XIe siècles","Apogée de l'empire du Ghana."],["1076","Les Almoravides prennent Koumbi Saleh."],["Vers 1235","Soundiata Keïta gagne la bataille de Kirina : naissance de l'empire du Mali."],["1324","Pèlerinage de Kankan Moussa à La Mecque."],["1464-1492","Règne de Soni Ali Ber (Songhay)."],["1493-1528","Règne d'Askia Mohamed."],["XVe siècle","Apogée du Monomotapa."],["1591","Bataille de Tondibi : fin de l'empire songhay."]]}
+];
+
+var METH=[
+{t:"Associer un mot à sa définition (Item 1)",p:["Lis tous les mots et toutes les définitions avant d'écrire.","Commence par les associations que tu connais sûrement.","Une définition ne sert qu'une seule fois : barre-la quand tu l'as utilisée.","Écris la réponse sous la forme 1-c, 2-a…"]},
+{t:"Répondre aux questions courtes (Item 2)",p:["Lis la consigne : si on demande deux exemples, donne exactement deux exemples.","Réponds par un mot ou une phrase courte, avec le vocabulaire du cours.","Ne recopie pas la question ; va droit à la réponse."]},
+{t:"Vrai ou Faux (Item 3)",p:["Recopie l'affirmation en entier, puis écris Vrai ou Faux.","Méfie-toi des mots « toujours », « jamais », « tous », « aucun ».","Si on demande de corriger, réécris l'affirmation juste."]},
+{t:"Expliquer en deux phrases",p:["Phrase 1 : l'idée principale.","Phrase 2 : la raison ou l'exemple, avec « car », « parce que » ou « donc ».","Utilise des mots précis du cours (limon, tribut, migration…)."]},
+{t:"Lire une carte ou un document",p:["Repère le titre, la date et la source.","Lis la légende avant de regarder la carte.","Relie ce que tu vois à une notion du cours."]},
+{t:"Gérer ses 1 h 30",p:["Lis tout le sujet en 5 minutes.","Commence par l'item où tu es le plus sûr(e).","Garde 10 minutes pour te relire : orthographe, numéros, nombre de réponses demandé."]}
+];
+
+/* ===== État ===== */
+var S={mode:"gate",tab:"fiches",sub:null,corr:false,msg:null,msgInfo:false,codeVal:"",access:null,quiz:null,fc:null,fcScope:0};
+
+function loadAccess(){
+  var raw=store.get("hg5e_access");if(!raw)return null;
+  try{var a=JSON.parse(raw);var end=new Date(a.start);end.setMonth(end.getMonth()+DURATION_MONTHS);
+    if(Date.now()<end.getTime())return {end:end,code:a.code};
+    return {expired:true};}catch(e){return null}
+}
+function usedCodes(){try{return JSON.parse(store.get("hg5e_used")||"[]")}catch(e){return[]}}
+function bestScores(){try{return JSON.parse(store.get("hg5e_best")||"{}")}catch(e){return{}}}
+function unlocked(){return !!(S.access&&S.access.end)}
+function canOpen(sa){return unlocked()||sa===1}
+
+/* ===== Icônes ===== */
+var IC={
+ fiches:'<path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/>',
+ epreuves:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>',
+ quiz:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',
+ reviser:'<path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>',
+ reperes:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+ methodes:'<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>'
+};
+var TABS=[["fiches","Fiches"],["epreuves","Épreuves"],["quiz","Quiz"],["reviser","Réviser"],["reperes","Repères"],["methodes","Méthodes"]];
+var LOCK='<svg class="lock" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Code d\'accès requis"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+
+/* ===== Vues ===== */
+function viewGate(){
+  var msg=S.msg?'<p class="msg'+(S.msgInfo?' info':'')+'" role="alert">'+S.msg+'</p>':"";
+  return '<main class="gate"><div class="sheet">'
+  +'<p class="school">Histoire-Géographie</p><h1>Classe de 5<sup>e</sup></h1>'
+  +'<p class="lead">Cours résumés, quiz et sujets corrigés pour réussir tes évaluations, selon le programme du Bénin.</p>'
+  +'<label for="code">Ton code d\'accès</label>'
+  +'<input id="code" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="HG5-XXXX-XXXX" value="'+S.codeVal+'">'
+  +msg
+  +'<button class="btn primary" data-act="activate">Activer mon code</button>'
+  +'<button class="btn ghost" data-act="preview">Voir l\'aperçu gratuit</button>'
+  +'<p class="price">'+PRICE+' pour '+DURATION_MONTHS+' mois d\'accès, un code par élève.</p>'
+  +'<p class="contact">Pour obtenir ton code, contacte '+OWNER.nom+' au <a href="tel:'+OWNER.telHref+'">'+OWNER.tel+'</a>.</p>'
+  +'</div></main>';
+}
+
+function listCard(act,id,sa,title,meta,locked,extra){
+  return '<button class="card-btn'+(locked?' is-locked':'')+'" data-act="'+act+'" data-id="'+id+'" data-sa="'+sa+'"><span class="grow"><span class="sa">SA '+sa+'</span><span class="t">'+title+'</span><span class="m">'+meta+(extra||"")+'</span></span>'+(locked?LOCK:"")+'</button>';
+}
+
+function viewFiches(){
+  if(S.sub){var s=SAS.find(function(x){return x.n===+S.sub});
+    var h='<main class="wrap fiche"><button class="back" data-act="back">‹ Toutes les fiches</button><span class="sa">SA '+s.n+'</span><h2>'+s.titre+'</h2><p class="intro">'+s.intro+'</p>';
+    s.sections.forEach(function(b){h+='<section class="block"><h3>'+b.h+'</h3><ul>'+b.pts.map(function(p){return'<li>'+p+'</li>'}).join("")+'</ul></section>'});
+    h+='<section class="block"><h3>Vocabulaire à retenir</h3><dl class="vocab">'+s.mots.map(function(m){return'<dt>'+m[0]+'</dt><dd>'+m[1]+'</dd>'}).join("")+'</dl></section>';
+    h+='<div class="row"><button class="btn" data-act="goquiz" data-sa="'+s.n+'">S\'entraîner par quiz</button></div></main>';
+    return h;}
+  return '<main><h1 class="page-title">Fiches de cours</h1><p class="page-sub">Une fiche résumée par situation d\'apprentissage.</p><div class="list">'
+    +SAS.map(function(s){return listCard("open-fiche",s.n,s.n,s.titre,s.sections.length+" parties",!canOpen(s.n))}).join("")+'</div></main>';
+}
+
+function viewEpreuves(){
+  if(S.sub){var e=EP.find(function(x){return x.id===S.sub});var sa=SAS.find(function(x){return x.n===e.sa});
+    var L="abcdefgh";
+    var h='<main class="wrap"><button class="back" data-act="back">‹ Toutes les épreuves</button><article class="exam">'
+    +'<header class="exhead"><p>ANNÉE SCOLAIRE : 20…-20…</p><p class="big">ÉVALUATION SOMMATIVE · HISTOIRE-GÉOGRAPHIE</p><p>CLASSE : 5<sup>e</sup> · DURÉE : 01 Heure 30 min · COEF. : 1</p><p>NOTE : …… / 20</p></header>'
+    +'<p><strong>SA '+sa.n+' :</strong> '+sa.titre+'</p>'
+    +'<section class="item"><h3>Item 1 <span>4 points</span></h3><p class="cons">Associe chaque mot à sa définition. Écris le numéro suivi de la lettre.</p><div class="assoc"><ol>'
+    +e.assoc.map(function(a){return'<li>'+a[0]+'</li>'}).join("")+'</ol><ol type="a">'
+    +e.ordre.map(function(i){return'<li>'+e.assoc[i][1]+'</li>'}).join("")+'</ol></div></section>'
+    +'<section class="item"><h3>Item 2 <span>8 points</span></h3><p class="cons">Réponds simplement aux consignes ci-dessous.</p>'
+    +e.courtes.map(function(c,i){return'<p class="q"><strong>'+(i+1)+'.</strong> '+c[0]+'</p>'}).join("")+'</section>'
+    +'<section class="item"><h3>Item 3 <span>8 points</span></h3><p class="cons">Réponds directement aux consignes ci-après.</p>'
+    +'<p class="q"><strong>3.1.</strong> Recopie chaque affirmation, puis écris Vrai ou Faux.</p>'
+    +e.vf.map(function(v,i){return'<p class="q">'+L[i]+') '+v[0]+'</p>'}).join("")
+    +'<p class="q"><strong>3.2.</strong> '+e.quest[0]+'</p></section></article>';
+    h+='<button class="btn primary" data-act="toggle-corr">'+(S.corr?"Masquer le corrigé":"Voir le corrigé")+'</button>';
+    if(S.corr){
+      var corr='<div class="corr"><h4>Corrigé et barème</h4><p><strong>Item 1 (4 pts, 1 pt par association).</strong> ';
+      corr+=e.assoc.map(function(a,k){return (k+1)+"-"+L[e.ordre.indexOf(k)]}).join(" ; ")+'</p>';
+      corr+='<p><strong>Item 2 (8 pts, 2 pts par question).</strong></p><ul>'+e.courtes.map(function(c,i){return'<li>'+(i+1)+'. '+c[1]+'</li>'}).join("")+'</ul>';
+      corr+='<p><strong>Item 3.1 (4 pts, 1 pt par affirmation).</strong></p><ul>'+e.vf.map(function(v,i){return'<li>'+L[i]+') '+(v[1]?"Vrai":"Faux. "+v[2])+'</li>'}).join("")+'</ul>';
+      corr+='<p><strong>Item 3.2 (4 pts).</strong> '+e.quest[1]+'</p></div>';
+      h+=corr;
+    }
+    return h+'</main>';}
+  return '<main><h1 class="page-title">Épreuves corrigées</h1><p class="page-sub">Format officiel de la 5<sup>e</sup> : 3 items, notés sur 20, durée 1 h 30.</p><div class="list">'
+    +EP.map(function(e){var sa=SAS.find(function(x){return x.n===e.sa});return listCard("open-ep",e.id,e.sa,"Évaluation : "+sa.court,"1 h 30 · sur 20 points",!canOpen(e.sa))}).join("")+'</div></main>';
+}
+
+function viewQuiz(){
+  var q=S.quiz;
+  if(q&&!q.done){
+    var it=q.q.items[q.qs[q.i]];
+    var h='<main class="wrap"><button class="back" data-act="quit">‹ Quitter le quiz</button><p class="page-sub" style="margin:0">SA '+q.q.sa+' · '+q.q.titre+' · Question '+(q.i+1)+' sur '+q.qs.length+'</p><div class="bar"><i style="width:'+(q.i/q.qs.length*100)+'%"></i></div>'
+    +'<p class="qtext">'+it.q+'</p>';
+    q.opts.forEach(function(o,k){
+      var cls="opt";if(q.sel!==null){if(o.ok)cls+=" ok";else if(k===q.sel)cls+=" bad"}
+      h+='<button class="'+cls+'" data-act="answer" data-i="'+k+'"'+(q.sel!==null?" disabled":"")+'>'+o.t+'</button>';
+    });
+    if(q.sel!==null){
+      h+='<p class="expl"><strong>'+(q.opts[q.sel].ok?"Bonne réponse. ":"Pas tout à fait. ")+'</strong>'+it.e+'</p>'
+      +'<button class="btn primary" data-act="next">'+(q.i+1>=q.qs.length?"Voir mon score":"Question suivante")+'</button>';
+    }
+    return h+'</main>';
+  }
+  if(q&&q.done){
+    var r=q.score/q.qs.length;var m=r===1?"Parfait !":r>=0.75?"Très bien !":r>=0.5?"C'est un bon début, relis la fiche.":"Relis la fiche de cours puis recommence.";
+    return '<main class="wrap"><h1 class="page-title">Quiz terminé</h1><p class="score">'+q.score+' / '+q.qs.length+'</p><p>'+m+'</p>'
+    +'<button class="btn primary" data-act="replay">Rejouer ce quiz</button><button class="btn" data-act="quit">Retour aux quiz</button></main>';
+  }
+  var best=bestScores();
+  return '<main><h1 class="page-title">Quiz</h1><p class="page-sub">Correction immédiate après chaque réponse.</p><div class="list">'
+    +QZ.map(function(z){return listCard("open-quiz",z.id,z.sa,z.titre,z.items.length+" questions"+(best[z.id]!=null?" · meilleur score : "+best[z.id]+"/"+z.items.length:""),!canOpen(z.sa))}).join("")+'</div></main>';
+}
+
+function viewReviser(){
+  var f=S.fc;
+  var h='<main class="wrap"><h1 class="page-title">Révision express</h1><p class="page-sub">Lis la question, réponds dans ta tête, puis retourne la carte.</p><div class="chips" role="group" aria-label="Choisir une SA">';
+  h+='<button class="pill" data-act="fc-scope" data-sa="0" aria-pressed="'+(S.fcScope===0)+'">Toutes</button>';
+  SAS.forEach(function(s){h+='<button class="pill" data-act="fc-scope" data-sa="'+s.n+'" aria-pressed="'+(S.fcScope===s.n)+'">SA '+s.n+(canOpen(s.n)?"":" 🔒")+'</button>'});
+  h+='</div>';
+  if(!f){return h+'</main>'}
+  if(f.locked){return h+'<p class="msg info">Cette SA est réservée aux élèves qui ont un code d\'accès.</p><button class="btn primary" data-act="goto-gate">Entrer mon code</button></main>'}
+  if(f.i>=f.deck.length){
+    return h+'<p class="score">'+f.known+' / '+f.deck.length+'</p><p>cartes sues du premier coup.</p><button class="btn primary" data-act="fc-restart">Recommencer</button></main>';
+  }
+  var c=f.deck[f.i];
+  h+='<p class="page-sub" style="margin:0">Carte '+(f.i+1)+' sur '+f.deck.length+' · SA '+c[0]+'</p>'
+  +'<button class="fc'+(f.flip?" back-side":"")+'" data-act="flip" aria-live="polite"><span class="lab">'+(f.flip?"Réponse":"Question")+'</span><span class="txt">'+(f.flip?c[2]:c[1])+'</span></button>';
+  if(f.flip){h+='<div class="row"><button class="btn" data-act="fc-next" data-k="0">À revoir</button><button class="btn primary" data-act="fc-next" data-k="1">Je savais</button></div>'}
+  else{h+='<button class="btn primary" data-act="flip">Retourner la carte</button>'}
+  return h+'</main>';
+}
+
+function viewReperes(){
+  var h='<main><h1 class="page-title">Repères</h1><p class="page-sub">Dates, lieux et chiffres à connaître.</p>';
+  REP.forEach(function(r){
+    var s=SAS.find(function(x){return x.n===r.sa});
+    h+='<section class="block"><h3>SA '+s.n+' : '+s.court+'</h3>';
+    if(!canOpen(s.n)){h+='<p style="color:var(--muted);margin:0">'+LOCK.replace('class="lock"','class="lock" style="vertical-align:-4px"')+' Réservé aux élèves ayant un code d\'accès.</p></section>';return}
+    h+='<dl class="rep">'+r.items.map(function(i){return'<dt>'+i[0]+'</dt><dd>'+i[1]+'</dd>'}).join("")+'</dl></section>';
+  });
+  return h+'</main>';
+}
+
+function viewMethodes(){
+  var h='<main><h1 class="page-title">Méthodes</h1><p class="page-sub">Comment réussir chaque type d\'exercice.</p>';
+  METH.forEach(function(m){h+='<details><summary>'+m.t+'</summary><ul>'+m.p.map(function(p){return'<li>'+p+'</li>'}).join("")+'</ul></details>'});
+  h+='<p class="foot">Application créée par '+OWNER.nom+' · <a href="tel:'+OWNER.telHref+'">'+OWNER.tel+'</a></p>';
+  return h+'</main>';
+}
+
+function viewApp(){
+  var chip=unlocked()?'<span class="chip">Accès jusqu\'au '+fmtDate(S.access.end)+'</span>':'<button class="chip" data-act="goto-gate">Aperçu gratuit · Activer un code</button>';
+  var body={fiches:viewFiches,epreuves:viewEpreuves,quiz:viewQuiz,reviser:viewReviser,reperes:viewReperes,methodes:viewMethodes}[S.tab]();
+  var nav='<nav class="tabs" aria-label="Sections"><div class="in">'+TABS.map(function(t){
+    return'<button data-act="tab" data-tab="'+t[0]+'"'+(S.tab===t[0]?' aria-current="page"':"")+'><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[t[0]]+'</svg>'+t[1]+'</button>'}).join("")+'</div></nav>';
+  return '<header class="top"><span class="brand">Histoire-Géo 5<sup>e</sup></span>'+chip+'</header>'+body+nav;
+}
+
+function render(keepScroll){
+  document.getElementById("app").innerHTML=S.mode==="gate"?viewGate():viewApp();
+  if(!keepScroll)window.scrollTo(0,0);
+}
+
+/* ===== Actions ===== */
+function startQuiz(id){
+  var z=QZ.find(function(x){return x.id===id});
+  S.quiz={q:z,qs:shuf(z.items.map(function(_,i){return i})),i:0,score:0,sel:null,opts:null,done:false};
+  setOpts();
+}
+function setOpts(){var q=S.quiz;var it=q.q.items[q.qs[q.i]];q.opts=shuf(it.o.map(function(t,k){return{t:t,ok:k===it.a}}));q.sel=null}
+function buildDeck(){
+  var sc=S.fcScope;
+  var pool=FC.filter(function(c){return (sc===0||c[0]===sc)&&canOpen(c[0])});
+  S.fc=pool.length?{deck:shuf(pool.slice()),i:0,flip:false,known:0}:{locked:true};
+}
+function activate(){
+  var inp=document.getElementById("code");var raw=inp?inp.value:"";S.codeVal=raw;
+  var norm=raw.toUpperCase().replace(/[^A-Z0-9]/g,"");
+  S.msgInfo=false;
+  if(norm.length<8){S.msg="Entre ton code en entier, par exemple HG5-AB12-CD34.";return render(true)}
+  if(!HASHES.has(h53(SALT+norm))){S.msg="Ce code n'est pas valide. Vérifie chaque caractère ou contacte "+OWNER.nom+" au "+OWNER.tel+".";return render(true)}
+  var used=usedCodes();var cur=null;try{cur=JSON.parse(store.get("hg5e_access")||"null")}catch(e){}
+  if(used.indexOf(norm)>-1&&!(cur&&cur.code===norm&&S.access&&S.access.end)){S.msg="Ce code a déjà été utilisé sur cet appareil. Contacte "+OWNER.nom+" pour un nouveau code.";return render(true)}
+  if(!(cur&&cur.code===norm)){store.set("hg5e_access",JSON.stringify({code:norm,start:new Date().toISOString()}));used.push(norm);store.set("hg5e_used",JSON.stringify(used))}
+  S.access=loadAccess();S.msg=null;S.codeVal="";S.mode="app";S.tab="fiches";S.sub=null;buildDeck();render();
+}
+
+function act(a,d){
+  switch(a){
+    case "activate":return activate();
+    case "preview":S.mode="app";S.msg=null;return render();
+    case "goto-gate":S.mode="gate";S.msg=d.locked?"Ce contenu nécessite un code d'accès.":null;S.msgInfo=true;return render();
+    case "tab":S.tab=d.tab;S.sub=null;S.corr=false;if(d.tab==="reviser"&&!S.fc)buildDeck();return render();
+    case "open-fiche":if(!canOpen(+d.sa)){return act("goto-gate",{locked:1})}S.sub=d.id;return render();
+    case "open-ep":if(!canOpen(+d.sa)){return act("goto-gate",{locked:1})}S.sub=d.id;S.corr=false;return render();
+    case "open-quiz":if(!canOpen(+d.sa)){return act("goto-gate",{locked:1})}startQuiz(d.id);return render();
+    case "goquiz":S.tab="quiz";S.sub=null;S.quiz=null;return render();
+    case "back":S.sub=null;S.corr=false;return render();
+    case "toggle-corr":S.corr=!S.corr;return render(true);
+    case "answer":{var q=S.quiz;if(q.sel!==null)return;q.sel=+d.i;if(q.opts[q.sel].ok)q.score++;return render(true)}
+    case "next":{var q2=S.quiz;q2.i++;if(q2.i>=q2.qs.length){q2.done=true;var b=bestScores();if(b[q2.q.id]==null||q2.score>b[q2.q.id]){b[q2.q.id]=q2.score;store.set("hg5e_best",JSON.stringify(b))}}else{setOpts()}return render()}
+    case "replay":startQuiz(S.quiz.q.id);return render();
+    case "quit":S.quiz=null;return render();
+    case "fc-scope":S.fcScope=+d.sa;buildDeck();return render(true);
+    case "flip":if(S.fc&&S.fc.deck){S.fc.flip=!S.fc.flip}return render(true);
+    case "fc-next":{var f=S.fc;if(d.k==="1"&&!f.seenAgain)f.known++;f.i++;f.flip=false;f.seenAgain=false;return render(true)}
+    case "fc-restart":buildDeck();return render(true);
+  }
+}
+
+document.addEventListener("click",function(e){var el=e.target.closest("[data-act]");if(!el)return;act(el.dataset.act,el.dataset)});
+document.addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target&&e.target.id==="code"){activate()}});
+
+/* ===== Démarrage ===== */
+S.access=loadAccess();
+if(S.access&&S.access.end){S.mode="app"}
+else if(S.access&&S.access.expired){S.msg="Ton accès de "+DURATION_MONTHS+" mois est terminé. Contacte "+OWNER.nom+" au "+OWNER.tel+" pour un nouveau code.";S.msgInfo=true}
+buildDeck();
+render();
+</script>
+</body>
+</html>
