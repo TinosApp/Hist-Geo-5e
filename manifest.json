@@ -1,0 +1,17 @@
+{
+  "name": "Histoire-Géographie 5e",
+  "short_name": "Hist-Géo 5e",
+  "description": "Cours, quiz et épreuves corrigées d'Histoire-Géographie pour la classe de 5e (Bénin).",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F2F5F1",
+  "theme_color": "#0E5A3A",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
